@@ -9,4 +9,4 @@ Java学習用のコーディングスタディをまとめたリポジトリで�
 ### Dランク
 | ファイル | 内容 |
 |---|---|
-| `d-rank/BambooSplit.java` | 標準入力の読み込み(BufferedReader)、文字列→数値変換(Integer.parseInt)、静的定数(static final)による整数除算の基本形 |
+| `d-rank/IntegerDivision.java` | 標準入力の読み込み(BufferedReader)、文字列→数値変換(Integer.parseInt)、静的定数(static final)による整数除算の基本形 |
