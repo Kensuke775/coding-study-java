@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class BambooSplit {
     static final int DIVISOR = 3;
 
     public static void main(String[] args) throws IOException {
