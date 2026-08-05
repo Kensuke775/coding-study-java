@@ -9,31 +9,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DualThresholdCheck {
-    static final int COUNTS = 3;
+    static final int REQUIRED_COUNT = 3;
+
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         List<String> input = new ArrayList<>();
         String line;
-        while((line = reader.readLine()) != null){
+        while ((line = reader.readLine()) != null) {
             input.add(line);
         }
-        int record = Integer.parseInt(input.get(0));
-        String[] parts = input.get(1).split(" ");
-        int minSingleAmount = Integer.parseInt(parts[0]);
-        int minTotalAmount = Integer.parseInt(parts[1]);
-        String[] shoppingRecords = input.get(2).split(" ");
-        boolean isSilver = false;
-        int totalCounts = 0;
-        int totalAmounts = 0;
-        for(String recordText : shoppingRecords){
-            int amount = Integer.parseInt(recordText);
-            if(amount >= minSingleAmount) totalCounts += 1;
-            totalAmounts += amount;
-            if(totalCounts >= COUNTS && totalAmounts >= minTotalAmount) {
-                isSilver = true;
+        int recordCount = Integer.parseInt(input.get(0));
+        String[] thresholds = input.get(1).split(" ");
+        int singleThreshold = Integer.parseInt(thresholds[0]);
+        int totalThreshold = Integer.parseInt(thresholds[1]);
+        String[] amounts = input.get(2).split(" ");
+
+        boolean meetsBothConditions = false;
+        int countOverThreshold = 0;
+        int totalAmount = 0;
+        for (String amountText : amounts) {
+            int amount = Integer.parseInt(amountText);
+            if (amount >= singleThreshold) countOverThreshold += 1;
+            totalAmount += amount;
+            if (countOverThreshold >= REQUIRED_COUNT && totalAmount >= totalThreshold) {
+                meetsBothConditions = true;
                 break;
             }
         }
-        System.out.println(isSilver ? "silver" : "bronze");
+        System.out.println(meetsBothConditions ? "qualified" : "not-qualified");
     }
 }
