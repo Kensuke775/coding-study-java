@@ -78,3 +78,16 @@ subList()による範囲指定、階層的なキャパシティ判定(繰越容�
 ```
 1000
 ```
+
+#### `easy/TrimmedAverageTruncated.java`
+Arrays.stream().map().collect()によるString[]→List<Integer>変換、stream().max()/min()による最大値・最小値取得、List.remove(Integer.valueOf(...))による値ベースの削除、int演算のみでの小数第1位切り捨て((int)キャストとdoubleリテラルの使い分け)
+
+入力例
+```
+5
+1 2 4 8 100
+```
+出力例
+```
+4.6
+```
