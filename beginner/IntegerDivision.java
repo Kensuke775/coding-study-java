@@ -9,16 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IntegerDivision {
-    static final int DIVISOR = 3;
+    static final int DIVISOR = 3; // 割る数
 
     public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        List<String> input = new ArrayList<>();
-        String line;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); // 標準入力を読み込むためのオブジェクト
+        List<String> input = new ArrayList<>(); // 読み込んだ行を格納するリスト
+        String line; // 1行分の文字列を一時的に格納する変数
         while ((line = reader.readLine()) != null) {
             input.add(line);
         }
-        int n = Integer.parseInt(input.get(0));
+        int n = Integer.parseInt(input.get(0)); // 割られる数（入力値）
         System.out.println(n / DIVISOR);
     }
 }

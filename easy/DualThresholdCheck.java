@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DualThresholdCheck {
-    static final int REQUIRED_COUNT = 3;
+    static final int REQUIRED_COUNT = 3; // 条件を満たすのに必要な回数（定数）
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -18,17 +18,17 @@ public class DualThresholdCheck {
         while ((line = reader.readLine()) != null) {
             input.add(line);
         }
-        int recordCount = Integer.parseInt(input.get(0));
-        String[] thresholds = input.get(1).split(" ");
-        int singleThreshold = Integer.parseInt(thresholds[0]);
-        int totalThreshold = Integer.parseInt(thresholds[1]);
-        String[] amounts = input.get(2).split(" ");
+        int recordCount = Integer.parseInt(input.get(0)); // レコード件数（今回のロジックでは未使用）
+        String[] thresholds = input.get(1).split(" ");    // しきい値2つが入った配列
+        int singleThreshold = Integer.parseInt(thresholds[0]); // 単体の値に対するしきい値
+        int totalThreshold = Integer.parseInt(thresholds[1]);  // 合計値に対するしきい値
+        String[] amounts = input.get(2).split(" ");            // 各金額の配列
 
-        boolean meetsBothConditions = false;
-        int countOverThreshold = 0;
-        int totalAmount = 0;
-        for (String amountText : amounts) {
-            int amount = Integer.parseInt(amountText);
+        boolean meetsBothConditions = false; // 両方の条件を満たしたか
+        int countOverThreshold = 0;          // しきい値以上だった回数
+        int totalAmount = 0;                 // 合計金額
+        for (String amountText : amounts) {  // amountText: 金額の文字列（変換前）
+            int amount = Integer.parseInt(amountText); // amount: 現在処理中の金額
             if (amount >= singleThreshold) countOverThreshold += 1;
             totalAmount += amount;
             if (countOverThreshold >= REQUIRED_COUNT && totalAmount >= totalThreshold) {

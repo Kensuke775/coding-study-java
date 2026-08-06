@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderedSubsequenceCounter {
-    static final String PATTERN = "code";
+    static final String PATTERN = "code"; // 一致させたい対象パターン（定数）
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -19,15 +19,15 @@ public class OrderedSubsequenceCounter {
             input.add(line);
         }
 
-        String[] words = input.get(1).split(" ");
-        StringBuilder matchedSoFar = new StringBuilder();
-        int patternIndex = 0;
-        int matchCount = 0;
-        for (String word : words) {
-            for (int i = 0; i < word.length(); i++) {
-                char currentChar = word.charAt(i);
+        String[] words = input.get(1).split(" ");        // 走査対象の単語配列
+        StringBuilder matchedSoFar = new StringBuilder(); // ここまで一致した文字を組み立てるバッファ
+        int patternIndex = 0;                             // パターン内で次に期待する文字の位置
+        int matchCount = 0;                               // 完全一致した回数
+        for (String word : words) {                       // word: 現在処理中の単語
+            for (int i = 0; i < word.length(); i++) {      // i: 単語内の文字位置
+                char currentChar = word.charAt(i);         // 現在見ている1文字
                 if (PATTERN.indexOf(currentChar) == -1) continue;
-                char expectedChar = PATTERN.charAt(patternIndex);
+                char expectedChar = PATTERN.charAt(patternIndex); // パターン側で期待されている1文字
                 if (currentChar == expectedChar) {
                     matchedSoFar.append(currentChar);
                     patternIndex = (patternIndex + 1) % PATTERN.length();
