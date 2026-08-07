@@ -91,3 +91,21 @@ Arrays.stream().map().collect()によるString[]→List<Integer>変換、stream(
 ```
 4.6
 ```
+
+#### `easy/SetDifferenceCount.java`
+HashSet/Setのimportの使い分け(インターフェースと実装クラス)、subList()による2つの期間の切り出し、Set.removeAll()による差集合の取得
+
+入力例
+```
+3 6
+tom
+john
+tom
+paul
+jimmy
+jimmy
+```
+出力例
+```
+2
+```
