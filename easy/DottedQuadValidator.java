@@ -18,6 +18,23 @@ public class DottedQuadValidator {
         return value >= OCTET_MIN && value <= OCTET_MAX;
     }
 
+    static boolean isValidDottedQuad(String record){
+        var segments = record.split("\\.+");
+        if (segments.length != REQUIRED_SEGMENT_COUNT) {
+            return false;
+        }
+        for (String segment : segments) {
+            if (segment.isEmpty() || segment.length() > OCTET_MAX_DIGITS) {
+                return false;
+            }
+            var value = Integer.parseInt(segment);
+            if (!isValidOctet(value)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         List<String> input = new ArrayList<>();
@@ -27,26 +44,8 @@ public class DottedQuadValidator {
         }
         var recordCount = Integer.parseInt(input.get(0).split(" ")[0]);
         var recordList = input.subList(1, recordCount + 1);
-
-        outer:
-        for (String record : recordList) {
-            var segments = record.split("\\.+");
-            if (segments.length != REQUIRED_SEGMENT_COUNT) {
-                System.out.println("False");
-                continue outer;
-            }
-            for (String segment : segments) {
-                if (segment.isEmpty() || segment.length() > OCTET_MAX_DIGITS) {
-                    System.out.println("False");
-                    continue outer;
-                }
-                var value = Integer.parseInt(segment);
-                if (!isValidOctet(value)) {
-                    System.out.println("False");
-                    continue outer;
-                }
-            }
-            System.out.println("True");
+        for(String record: recordList){
+            System.out.println(isValidDottedQuad(record) ? "True" : "False");
         }
     }
 }
