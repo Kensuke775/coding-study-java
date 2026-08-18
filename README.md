@@ -34,9 +34,9 @@ Java学習用のコーディングスタディをまとめたリポジトリで�
 13
 ```
 
-### Easy
+### Medium
 
-#### `easy/GridStepValuePrinter.java`
+#### `medium/GridStepValuePrinter.java`
 移動方向を表す文字をMap<Character, int[]>で座標差分に変換するテーブル駆動な実装、toCharArray()による1文字ずつの走査、2次元配列上での現在位置の累積更新
 
 入力例
@@ -55,6 +55,8 @@ RFLB
 6
 4
 ```
+
+### Easy
 
 #### `easy/DottedQuadValidator.java`
 正規表現の量指定子(`\.+`)による連続区切り文字の吸収、空文字チェック・桁数チェックによるInteger.parseInt()前のバリデーション(桁あふれ例外対策)、判定ロジックをboolean返却メソッドへ切り出すことでlabeled continueの重複を解消するリファクタリング(continueはメソッド境界を越えられないためreturnで代替)
